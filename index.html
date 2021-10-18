@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&display=swap" rel="stylesheet">
+ 
+  <title>Frontend Mentor | [Blogr]</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .humberger{
+      display:none
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-size:16px;
+      background-color:  hsl(240, 2%, 79%);
+      overflow-x:hidden;
+      width:100%;
+
+    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    .container {
+    background-image:url('./images/bg-pattern-intro.svg');
+    height:50rem;
+    width:100%;
+    background-color: hsl(356, 100%, 66%);
+    background-position:  center;
+    background-repeat: no-repeat;
+    background-size:130rem;
+    border-bottom-left-radius: 100px;
+    position: relative;
+
+  
+    }
+    .nav {
+      width:100%;
+      height:6rem;
+      display:flex;
+      justify-content: space-around;
+      align-items:center;
+      font-family:'Overpass' ,sans-serif;
+      position:relative;
+    }
+    .nav .left {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      width:auto;
+      position:relative;
+    }
+    .nav .left .logo {
+      display:flex;
+      align-items:center;
+      width:5rem;
+      height:100%;
+      margin-right:40px;
+      cursor:pointer;
+    }
+    .nav .left .center {
+      width:25rem;
+    }
+    .nav .left .center ul {
+      width:100%;
+      display:flex;
+    }
+    .nav .left .center ul .lis {
+      width:100%;
+      display:flex;
+      font-family: 'Overpass', sans-serif;
+      color:  hsl(0, 0%, 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    }
+    .nav .left .center ul li img {
+      width:16px;
+      height:auto;
+      margin-left: 5px;
+      margin-right:30px;
+    }
+    .signup {
+      font-size: 18px;
+      padding:0.6rem 2rem;
+      border-radius: 8rem;
+      color:  red;
+      border: 1px solid white;
+      transition:all 200ms ease-out;
+    }
+    .btn {
+      cursor:pointer;
+    }
+    .login {
+      margin-right: 10px;
+      font-size:18px;
+      padding:0.6rem 2rem;
+      border-radius: 8rem;
+      color:  white;
+      border: 1px solid transparent;
+      background-color: transparent;
+      transition:all 200ms ease-out;
+
+    }
+    .signup:hover{
+      border-radius: 100px;
+      color:  white;
+      border: 1px solid transparent; 
+      background-color: hsl(355, 100%, 74%);
+    }
+    .concenter {
+      font-family: 'Overpass', sans-serif;
+      color: aliceblue;
+      height:50rem;
+      display:flex;
+      align-items:center;
+      /* margin-top: 10rem; */
+      flex-direction: column;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .concenter h1 {
+      font-size:3rem;
+      margin-bottom:2rem;
+    }
+    .concenter p {
+      margin-bottom:3rem;
+      color: rgba(255, 255, 255, 0.794);
+    }
+    .free{
+      font-size:0.9rem;
+      margin-right: 10px; 
+      padding:0.6rem 0.8rem;
+    }
+    .free :hover{
+      color: hsl(355, 100%, 74%);
+    }
+    .more {
+      padding:0.6rem 0.8rem;
+      font-size:0.9rem;
+      border: 1px solid whitesmoke;
+    }
+    .more:hover {
+      color: hsl(356, 100%, 66%);
+      background-color:aliceblue;
+    }
+    .container2 {
+      margin-top: 5rem;
+      height:50rem;
+      margin-bottom: 5rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:relative;
+    }
+    .left2 {
+      width: 35%;
+      height:30rem;
+      margin-left:10rem;
+      position: absolute;
+      left:0;
+    }
+    .right2 {
+      position:absolute;
+      right: 0;
+      width: 40%;
+      height:50rem;
+      background-image: url('./images/illustration-editor-desktop.svg');
+      background-position: left;
+      background-size: cover;
+    }
+    .h1q {
+      position: absolute;
+      top:0;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      flex-wrap: nowrap;
+    }
+    h1 {
+      margin-bottom:1rem;
+      font-family: 'Overpass', sans-serif;
+      margin-top:3rem;
+    }
+    .pre {
+      line-height: 25px;
+      font-family: 'Overpass', sans-serif;
+    }
+    .container3 {
+      height:25rem;
+      width:100%;
+      background-color: hsl(237, 23%, 32%);
+      overflow:visible;
+      background-image: url(./images/bg-pattern-circles.svg);
+      background-size:calc(60rem);
+      background-attachment:scroll;
+      background-repeat: no-repeat;
+      background-position: bottom left  ;
+      position:relative;
+      display:flex;
+      justify-content:space-evenly;
+      border-top-right-radius:100px;
+      border-bottom-left-radius: 100px;
+    }
+    .right3{
+      display:flex;
+      flex-direction:column;
+      justify-content: center;
+      height:100%;
+      width:50%;
+    }
+    .left3 {
+      width: 50%;
+      height:20rem;
+    }
+    .phone {
+      height: 35rem;
+    width: 30rem;
+    position: absolute;
+    top: -5rem;
+    bottom: 5rem;
+    left: 0rem;
+    }
+    .h1s {
+      margin-bottom:1rem;
+      font-family: 'Overpass', sans-serif;
+      margin-top:3rem;
+      color: #fff;
+    }
+    .pres {
+      line-height: 25px;
+      font-family: 'Overpass', sans-serif;
+      color: #fff;
+    }
+    .container4 {
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .left4 {
+      background-image: url('./images/illustration-laptop-desktop.svg');
+      width: 49%;
+      height:50rem;
+      background-position: right;
+      background-size: cover;
+    }
+    .right4 {
+      width: 35%;
+      height:auto;
+      margin-right:10rem;
+    }
+    .footer {
+      height:30rem;
+      width:100%;
+      background-color: hsl(240, 10%, 16%);
+      display:flex;
+      border-top-right-radius: 100px;
+      padding: 100px 200px;
+      justify-content:space-around;
+    }
+    .logos {
+      height:3rem;
+      cursor:pointer;
+    }
+    li {
+      color: rgba(255, 255, 255, 0.705);
+      list-style: none;
+      margin-top:1rem;
+    }
+    .header {
+      color :rgb(255, 255, 255);
+      margin-bottom: 3rem;
+    }
+    .header:hover {
+      text-decoration: none;
+    }
+    li:hover {
+      text-decoration:underline;
+      cursor:pointer;
+    }
+
+    .closemenu {
+      display:none;
+    }
+    .menu {
+      display:none;
+      height:3rem;
+    }
+
+    @media only screen and (max-width: 800px) {
+      body {
+      overflow-x:hidden;
+      }
+      .nav .center {
+        display: none;
+      }
+      .humberger {
+        display: flex;
+        cursor:pointer;
+        width:auto;
+        
+      }
+      .concenter {
+        /* position: absolute; */
+        /* top: 0; */
+        /* right: 50%; */
+        /* transform: translate(50%,0%); */
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        z-index: 1;
+      }
+      .concenter h1 {
+        font-size: 42px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+      }
+      .container2 {
+        display:flex;
+        flex-direction: column;
+      }
+      .h1q {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        font-size:1.5rem;
+        position: relative;
+        top: -4rem;
+      }
+      
+      .right2{
+        width:100%;
+        background-image: url('./images/illustration-editor-mobile.svg');
+        background-attachment: scroll;
+        background-position:center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: -6rem 0;
+        position: relative;
+      }
+      .left2{
+        position: relative;
+        width:80%; 
+        margin-top: 2rem;
+        margin-left: 0;
+        margin-bottom: 15rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+      }
+      .container3 {
+        display:flex;
+        flex-direction: column;
+        background-position:bottom;
+        height: 33rem;
+      }
+      .container3 .left3 img {
+        width: 100%;
+        height: 13rem;
+        top: 0rem;
+        position: relative;
+      }
+      .container3 .right3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .container .right3 .h1s {
+        text-align: center;
+        width: 100%;
+        margin: 0;
+      }
+      .h1s {
+        width: 100%;
+        text-align: center;
+      }
+      .pres {
+        width: 80%;
+        height: 20rem;
+        text-align: center;
+        margin: 0
+      }
+
+       .container4{
+        display: flex;
+        flex-direction: column;
+        margin: -10rem 0 0 0;
+      } 
+      .container4 .left4 {
+        background-image: url('./images/illustration-laptop-mobile.svg');
+        background-attachment: scroll;
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 100%;
+      }
+      .container4 .right4 {
+        text-align: center;
+        width: 50%;
+        margin: -10rem 0 5rem 0;
+      }
+       .footer {
+        display:flex;
+        align-items:center;
+        flex-direction:column;
+        width: 100%;
+        height:100%;
+        padding: 5rem 0; 
+      }
+      .header {
+        margin:0.5rem 0;
+      }
+      .footer ul {
+        margin:2rem 0; 
+      }
+      .closemenue-open {
+        display: flex;
+        cursor:pointer;
+      }
+      .nav .right {
+         display:none;
+        }
+    
+    
+        .display-none {
+          display:none;
+        }
+        .display-flex {
+          display: flex;
+          cursor:pointer;
+        }
+        .menu {
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          position: absolute;
+          flex-direction:column;
+          top: 6rem;
+          bottom:8rem;
+          right:10%;
+          left:10%;
+          background-color: rgb(255, 255, 255); 
+          /* width: 80%;
+          height: 0%; */
+          border-radius: 10px;
+          z-index: -3;
+          transition:all 300ms ease;
+          align-content: center;
+        }
+        .menu-Products {
+          margin:3rem 0 0 0;
+          width: 100%;
+          display: flex;
+          flex-direction:column;
+          align-items:center;
+          position:relative;
+    
+        }
+        .menu-Company {
+          width: 100%;
+          display: flex;
+          flex-direction:column;
+          align-items:center;
+          position:relative;
+        }
+        .header-Connect {
+          width: 100%;
+          display: flex;
+          flex-direction:column;
+          align-items:center;
+          position:relative;
+        }
+        .li-menu{
+          color: hsl(240, 10%, 16%);
+          font-family: 'Overpass', sans-serif;
+          text-decoration: normal;
+        }
+        .menu-add-product {
+          background-color:hsl(240, 2%, 79%);
+          display: none;
+          flex-direction:column;
+          align-items:center;
+          width: 80%;
+          height: 100%;
+          margin :1rem 0;
+          padding:2rem 1rem;
+          border-radius:10px;
+          transform: scale(1);
+          transition: transform 1s;    
+        }
+        .menu-add-Company {
+          background-color:rgba(0, 0, 0, 0.219);
+          display: none;
+          flex-direction:column;
+          align-items:center;
+          width: 80%;
+          height: 100%;
+          margin :1rem 0;
+          padding:2rem 1rem;
+          border-radius:10px;
+        }
+        .menu-add-Contact {
+          background-color:rgba(0, 0, 0, 0.219);
+          display: none;
+          flex-direction:column;
+          align-items:center;
+          width: 80%;
+          height: 100%;
+          margin :1rem 0;
+          padding:2rem 1rem;
+          border-radius:10px;
+          background-color: rgba(0, 0, 0, 0.233);
+        }
+        .list-menu {
+          height: 70%;
+          width: 100%;
+        }
+        .login-menu {
+          position:absolute;
+          bottom:0;
+          width:80%;
+          height: 30%;
+          display: flex;
+          align-items:center;
+          justify-content:center;
+          flex-direction: column;
+          border-top: 1px solid black;
+        }
+        .login-btn {
+          margin-right: 10px;
+          font-size:18px;
+          padding:0.6rem 2rem;
+          border-radius: 8rem;
+          color:  rgb(0, 0, 0);
+          border: 1px solid transparent;
+          background-color: transparent;
+          transition:all 200ms ease-out;
+          margin:-2rem 0 0 0;
+        }
+        .signup-btn {
+          font-size: 18px;
+          padding:0.6rem 2rem;
+          border-radius: 8rem;
+          color:  rgb(250, 250, 250);
+          border: 1px solid white;
+          transition:all 200ms ease-out; 
+          background-color: hsl(356, 100%, 66%);
+    
+        }
+      } 
+      .Product-btn{
+        width: 100%;
+        display: flex;
+        /* flex-direction:column; */
+        align-items:center;
+        position:relative;
+      }
+      .Product-add {
+        background-color:hsl(0, 0%, 100%);
+        flex-direction:column;
+        align-items:center;
+        margin :1rem 0;
+        padding:2rem 1rem;
+        border-radius:10px;
+        transform: scale(0);
+        position: absolute;
+        top: 80%;
+        left: -42%;
+        height: 15rem;
+      }
+      .Product-btn img {
+        width: 20px;
+        height: 20px;
+      }
+      .Product-list {
+        display:flex;
+        position:relative;
+        /* flex-direction:row; */
+      }
+      .li-Product {
+        color: black;
+      }
+
+      .dropbtn {
+  /* background-color: #04AA6D; */
+  /* color: white; */
+  /* padding: 16px; */
+  /* font-size: 16px; */
+  border: none;
+  background-color:transparent;
+  color: white;
+  margin-right: 1rem;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+      .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius:10px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+/* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
+    
+    
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="menu">
+      <div class="list-menu">
+        <ul class="menu-Products">
+          <li class="menu-product-header li-menu"> Product  <img src="./images/icon-arrow-dark.svg" alt="" srcset=""></li>
+          <ul class='menu-add-product'>
+          <li class="menu-product active li-menu">Overview</li>
+          <li class="menu-product active li-menu">Pricing</li>
+          <li class="menu-product active li-menu">Marketplace</li>
+          <li class="menu-product active li-menu">Features</li>
+          <li class="menu-product active li-menu">Integrations</li>
+          </ul>
+          
+        </ul>
+        <ul class="menu-Company">
+          <li class='Company-btn li-menu'> Company  <img src="./images/icon-arrow-dark.svg" alt="" srcset=""></li>
+          <ul class='menu-add-Company'>
+          <li class='li-menu'>About</li>
+          <li class='li-menu'>Team</li>
+          <li class='li-menu'>Blog</li>
+          <li class='li-menu'>Careers</li>
+          </ul>
+          
+        </ul>
+        <ul class="header-Connect">
+          <li class='Connect-btn li-menu'> Connect <img src="./images/icon-arrow-dark.svg" alt="" srcset=""></li>
+          <ul class='menu-add-Contact'>
+          <li class='li-menu'>Contact</li>
+          <li class='li-menu'>Newsletter</li>
+          <li class='li-menu'>LinkedIn</li>
+          </ul>
+        </ul>
+
+      </div>
+      <div class="right login-menu">
+          <button class='btn login-btn'>Login</button>
+          <button class='btn signup-btn'>Sign Up</button>
+        </div>
+
+    </div>
+    <div class="nav">
+      <div class="left">
+        <img class='logo' src="./images/logo.svg" alt="" srcset="">
+         <div class="center">
+          <div class="dropdown">
+            <button class="dropbtn">Product</button>
+            <div class="dropdown-content">
+              <a href="#">Overview</a>
+              <a href="#">Pricing</a>
+              <a href="#">Marketplace</a>
+              <a href="#">Features</a>
+              <a href="#">Integrations</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn" >Company</button>
+            <div class="dropdown-content">
+              <a href="#">About</a>
+              <a href="#">Team</a>
+              <a href="#">Blog</a>
+              <a href="#">Careers</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">Connect</button>
+            <div class="dropdown-content">
+              <a href="#">Contact</a>
+              <a href="#">Newsletter</a>
+              <a href="#">LinkedIn</a>
+            </div>
+          </div>
+
+          <!--
+          </ul>
+          <ul class="header-Connect">
+            <li class='Connect-btn li-menu'> Connect <img src="./images/icon-arrow-dark.svg" alt="" srcset=""></li>
+            <ul class='menu-add-Contact'>
+            <li class='li-menu'>Contact</li>
+            <li class='li-menu'>Newsletter</li>
+            <li class='li-menu'>LinkedIn</li>
+            </ul>
+          </ul> -->
+
+        </div>
+      </div>
+        <div class="right">
+          <button class='btn login'>Login</button>
+          <button class='btn signup'>Sign Up</button>
+        </div> 
+        <div class="humberger"><img src="./images/icon-hamburger.svg" alt="" srcset=""></div>
+        <div class="closemenu"><img src="./images/icon-close.svg" alt="" srcset=""></div>
+      </div>
+    </div>
+    <div class="concenter">
+      <h1><span> A modern </span> publishing platform</h1>
+      <p>Grow your audience and build your online brand</p>
+      <div class="btns">
+        <button class='btn free signup'>Start for Free</button>
+        <button class='btn more login'>Learn More</button>
+      </div>
+    </div>
+  </div>
+  <div class="container2">
+    <h1 class="h1q">Designed for the future</h1>
+    <div class="right2"></div>
+    <div class="left2">
+      <h1>Introducing an extensible editor</h1>
+      <p class='pre'>Blogr features an exceedingly intuitive interface which lets you focus on one thing: creating content. 
+        The editor supports management of multiple blogs and allows easy manipulation of embeds such as images, 
+        videos, and Markdown. Extensibility with plugins and themes provide easy ways to add functionality or 
+        change the looks of a blog.</p>
+      <h1>Robust content management</h1>
+      <p class='pre'>Flexible content management enables users to easily move through posts. Increase the usability of your blog 
+        by adding customized categories, sections, format, or flow. With this functionality, you’re in full control.</p>
+    </div>
+  </div>
+  <div class="container3">
+    <div class="left3"> <img class='phone' src="./images/illustration-phones.svg" alt="" srcset=""></div>
+    <div class="right3">
+      <h1 class="h1s">State of the Art Infrastructure</h1>
+      <p class="pres">With reliability and speed in mind, worldwide data centers provide the backbone for ultra-fast connectivity. 
+        This ensures your site will load instantly, no matter where your readers are, keeping your site competitive.</p>
+      </div>
+  </div>
+  <div class="container4">
+    <div class="left4"></div>
+    <div class="right4">
+      <h1>Free, open, simple</h1>
+      <p class="pre">Blogr is a free and open source application backed by a large community of helpful developers. It supports 
+        features such as code syntax highlighting, RSS feeds, social media integration, third-party commenting tools, 
+        and works seamlessly with Google Analytics. The architecture is clean and is relatively easy to learn.
+      </p>
+      <h1>Powerful tooling</h1>
+      <p class="pre">Batteries included. We built a simple and straightforward CLI tool that makes customization and deployment a breeze, but
+        capable of producing even the most complicated sites.
+      </p>
+    </div>
+  </div>
+  <div class="footer">
+    <img class='logos' src="./images/logo.svg" alt="" srcset="">
+    <ul>
+      <li class="header product"> Product</li>
+      <li class="menu-product">Overview</li>
+      <li class="menu-product">Pricing</li>
+      <li class="menu-product">Marketplace</li>
+      <li class="menu-product">Features</li>
+      <li class="menu-product">Integrations</li>
+    </ul>
+    <ul>
+      <li class="header Company"> Company</li>
+      <li >About</li>
+      <li >Team</li>
+      <li >Blog</li>
+      <li >Careers</li>
+    </ul>
+    <ul>
+      <li class="header Connect"> Connect</li>
+      <li >Contact</li>
+      <li >Newsletter</li>
+      <li >LinkedIn</li>
+    </ul>
+  </div>
+  <script src='./index.js' defer></script>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/raeinking">Raein</a>.
+  </div>
+</body>
+</html>
