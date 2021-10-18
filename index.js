@@ -11,15 +11,7 @@ const menu = document.querySelector('.menu');
 const Productbtn = document.querySelector('.Product-btn')
 const Productadd = document.querySelector('.Product-add')
 
-Productbtn.addEventListener('click', () => {
-        const rest = Productadd.style.transform;
-        
-})
-
-document.addEventListener('click', () => {
-        var app = document.body.offsetWidth
-        console.log(app);
-        if (app < 800) {
+document.addEventListener('click', () => {{
                 humberger.addEventListener('click', () => {
                 closemenu.style.display='flex';
                 humberger.style.display='none';
@@ -54,6 +46,5 @@ document.addEventListener('click', () => {
                 addCompany.style.display='none'
                 addContact.style.display='flex'
                 })
-                console.log('rrrr')        
         }
 });
